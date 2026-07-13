@@ -1,0 +1,992 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0C0F14" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Arrow OS" />
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAED0lEQVR4nO3dTY4bNxSFUTpjA554S1lBVuEVeRVZQRbnTNKw03B31w8fi7w8ZywVH6BPBAVJqE+fv3z90SDEH08PAD0JmiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIIepB/vv/19AhbEPQALzGLup6gi72OWNS1BF3orXhFXUfQRT6KVtQ1BF3gaKyi7k/QnZ2NVNR9Cbqjq3GKuh9Bd3I3SlH3IegOesUo6vsEfVPvCEV9j6BvqIpP1NcJ+qLq6ER9jaAvGBWbqM8T9EmjIxP1OYI+4am4RH2coA96Oqqn11+FoA+YJaZZ5piZoD8wW0SzzTMbQb9j1nhmnWsGgn6DaNYk6N9YIeYVZnyCoF9ZKZSVZh1F0L+oDOTPb3+XXFfU/yfo/4yIWdT1BN3G7syirrV90E8cM0RdZ+ugnzwzi7rGtkHP8AFQ1P1tGfQMMV99/FG7Rr1d0DPFfPd5H9kx6q2CnjHmXs9/y25RbxP0zDFX2ynqLYJeJebKN8YuUccHvUrMldd8sUPU0UGvFvOIa6dHHRv0qjGPWCM56sigV495xFqpUccFnRLziDUTo44KOi3mEWunRR0TdGrMI2ZIijom6PQXPP0N20tM0K3lRi3m46KCbi0vajGfExd0azlRi/m8yKBbWz9qMV8TG3Rr60Yt5uuig25tvajFfM+nz1++/nh6iBGqjwk9YhHzffE79IvqF3TmG2/uEnNrGwXd2rxRi7mfrYJubb6oxdzXdkG3Nk/UYu5vy6Bbez5qMdfYNujWnotazHW2Drq18VGLudb2Qbc2Lmox19vmi5UjZvjd8xVi/skO/YsVw1hx5kqCfmWlQFaadRRHjnfMfAQR8+/Zod8xazSzzjUDQX9gtnhmm2c2gj5glohmmWNmgj7o6ZieXn8Vgj7hqajEfJygTxodl5jPEfQFoyIT83mCvqg6NjFfI+gbqqIT83WCvql3fGK+R9Ad9IpQzPcJupNZb7y5G0F3NNutkXck6M5muXn9rgRd4GikYu5P0EU+ilXMNQRd6K1oxVxH0MVexyvmWoIe4CViMdfzn0Ki2KGJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJ8i+FwVftVWVouQAAAABJRU5ErkJggg==" />
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAEYklEQVR4nO3cTW4bRxSF0XLGBjzxlrKCrMIr8iqygizOGcREDMKSSHbVq597zphkl6D7qRuQoE+fv3z90SDUH7MPADMJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCaAyf75/tfsI0QTwES38YtgHgFMcj96EcwhgAneGrsI6gmg2EcjF0EtARR6dNwiqCOAIs+OWgQ1BFDg1TGLYDwBDHZ1xCIYSwAD9RqvCMYRwCC9RyuCMQQwwKixiqA/AXQ2eqQi6EsAHVWNUwT9CKCT6lGKoA8BdDBrjCK4TgAXzR7h7OvvTgAXrDK+Vc6xIwG8aLXRrXaeXQjgBauObdVzrUwAT1p9ZKufbzUCeMIu49rlnCsQwIOM6kwCeMCO49/xzDMI4AM7D2nns1cRwDsqBvTnt7+Hfr4I3ieAN1SOXwTzCOA3ZvzkF8EcArgz87FHBPUE8IsVnvlFUEsAP60w/mdf9yoR/E8Aba3xv/r6Z4ngP/EBrDj+q+97lAjCA1h5/L3e/5H0CGID2GH8VZIjiAxgt/FXhJQaQVwAu41/5GfeS4wgKoBdx1/x2TdpEcQEsPv4K6+RFEFEAKeMv/JaKREcH8Bp46+8ZkIERwdw6vgrr316BMcGcPr4K89wcgRHBpAy/hsRvO7IANIGkRZ8T0cG0FpOBMZ/zbEBtHZ+BMZ/3dEBtHZuBMbfx/EBtHZeBMbfT0QArZ0TgfH3FRNAa/tHYPz9RQXQ2r4RGP8Ynz5/+fpj9iFmqHpm7zEq4x8n7g5wU/UNvzpe4x8rNoDW1o/A+MeLDqC1dSMw/hrxAbS2XgTGX0cAP60SgfHXEsAvZkdg/PUEcGdWBMY/hwB+ozoC458n9hdhj1jh7/17MP63uQO844ThnPA1jCSAD+w8oJ3PXsUj0BN2eiQy/se4Azxhl1Htcs4VCOBJq49r9fOtRgAvWHVkq55rZQJ40WpjW+08uxDABauMbpVz7EgAF80e3+zr704AHcwaofFfJ4BOqsdo/H0IoKOqURp/PwLobPQ4jb8vAQwwaqTG358ABuk9VuMfQwAD9Rqt8Y8jgMGujtf4xxJAgVdHbPzjCaDIs2M2/hoCKPToqI2/jgCKfTRu468lgAneGrnx1xPAJPdjN/45BDDRbfTGP4//CkE0dwCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIj2L8uacAWcD2KvAAAAAElFTkSuQmCC" />
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%20%22Arrow%20OS%22%2C%20%22short_name%22%3A%20%22Arrow%20OS%22%2C%20%22description%22%3A%20%22Private%20executive%20operating%20system%22%2C%20%22theme_color%22%3A%20%22%230C0F14%22%2C%20%22background_color%22%3A%20%22%230C0F14%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22icons%22%3A%20%5B%7B%22src%22%3A%20%22data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAEYklEQVR4nO3cTW4bRxSF0XLGBjzxlrKCrMIr8iqygizOGcREDMKSSHbVq597zphkl6D7qRuQoE%2Bfv3z90SDUH7MPADMJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCaAyf75%2FtfsI0QTwES38YtgHgFMcj96EcwhgAneGrsI6gmg2EcjF0EtARR6dNwiqCOAIs%2BOWgQ1BFDg1TGLYDwBDHZ1xCIYSwAD9RqvCMYRwCC9RyuCMQQwwKixiqA%2FAXQ2eqQi6EsAHVWNUwT9CKCT6lGKoA8BdDBrjCK4TgAXzR7h7OvvTgAXrDK%2BVc6xIwG8aLXRrXaeXQjgBauObdVzrUwAT1p9ZKufbzUCeMIu49rlnCsQwIOM6kwCeMCO49%2FxzDMI4AM7D2nns1cRwDsqBvTnt7%2BHfr4I3ieAN1SOXwTzCOA3ZvzkF8EcArgz87FHBPUE8IsVnvlFUEsAP60w%2Fmdf9yoR%2FE8Aba3xv%2Fr6Z4ngP%2FEBrDj%2Bq%2B97lAjCA1h5%2FL3e%2F5H0CGID2GH8VZIjiAxgt%2FFXhJQaQVwAu41%2F5GfeS4wgKoBdx1%2Fx2TdpEcQEsPv4K6%2BRFEFEAKeMv%2FJaKREcH8Bp46%2B8ZkIERwdw6vgrr316BMcGcPr4K89wcgRHBpAy%2FhsRvO7IANIGkRZ8T0cG0FpOBMZ%2FzbEBtHZ%2BBMZ%2F3dEBtHZuBMbfx%2FEBtHZeBMbfT0QArZ0TgfH3FRNAa%2FtHYPz9RQXQ2r4RGP8Ynz5%2F%2Bfpj9iFmqHpm7zEq4x8n7g5wU%2FUNvzpe4x8rNoDW1o%2FA%2BMeLDqC1dSMw%2FhrxAbS2XgTGX0cAP60SgfHXEsAvZkdg%2FPUEcGdWBMY%2FhwB%2BozoC458n9hdhj1jh7%2F17MP63uQO844ThnPA1jCSAD%2Bw8oJ3PXsUj0BN2eiQy%2Fse4Azxhl1Htcs4VCOBJq49r9fOtRgAvWHVkq55rZQJ40WpjW%2B08uxDABauMbpVz7EgAF80e3%2Bzr704AHcwaofFfJ4BOqsdo%2FH0IoKOqURp%2FPwLobPQ4jb8vAQwwaqTG358ABuk9VuMfQwAD9Rqt8Y8jgMGujtf4xxJAgVdHbPzjCaDIs2M2%2FhoCKPToqI2%2FjgCKfTRu468lgAneGrnx1xPAJPdjN%2F45BDDRbfTGP4%2F%2FCkE0dwCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIj2L8uacAWcD2KvAAAAAElFTkSuQmCC%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image%2Fpng%22%7D%2C%20%7B%22src%22%3A%20%22data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAPV0lEQVR4nO3cy5Hc2hVE0aLGjOCELskCWSGLZIUskHHUAI9Bsl931we4n3NyLQcaQAE3d3DAL1%2B%2Fff9xAwCi%2FGP1BQAA8wkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAg2P%2F%2B86%2FVlwAsIgAg1M%2FxFwGQSQBAoLejLwIgjwCAMB%2BNvQiALAIAgtwbeREAOQQAhHh03EUAZBAAEODZURcB0J8AgOZeHXMRAL0JAGjs7IiLAOhLAEBTV423CICeBAA0dPVoiwDoRwBAM6PGWgRALwIAGhk90iIA%2BhAA0MSscRYB0IMAgAZmj7IIgPoEABS3aoxFANQmAKCw1SO8%2Bu8DrxMAUNQu47vLdQDPEQBQ0G6ju9v1APcJAChm17Hd9bqA9wkAKGT3kd39%2BoBfBAAUUWVcq1wnpBMAUEC1Ua12vZBIAMDmqo5p1euGFAIANlZ9RKtfP3QmAGBTXcazy31ANwIANtRtNLvdD3QgAGAzXcey631BVQIANtJ9JLvfH1QiAGATKeOYcp%2BwOwEAG0gbxbT7hR0JAFgsdQxT7xt2IQBgofQRTL9%2FWEkAwCLG7%2BA5wBoCABYwen%2FyPGA%2BAQCTGbv3eS4wlwCAiYzc5zwfmEcAwCTG7TGeE8whAGACo%2FYczwvGEwAwmDF7jecGYwkAGMiIneP5wTgCAAYxXtfwHGEMAQADGK1reZ5wPQEAFzNWY3iucC0BABcyUmN5vnAdAQAXMU5zeM5wDQEAFzBKc3necJ4AgJOM0RqeO5wjAOAEI7SW5w%2BvEwDwIuOzB78DvEYAwAuMzl78HvA8AQBPMjZ78rvAcwQAPMHI7M3vA48TAPAg41KD3wkeIwDgAUalFr8X3CcA4A5jUpPfDT4nAOATRqQ2vx98TADAB4wH0JkAgHcY%2Fz78lvA%2BAQBvGIx%2B%2FKbwdwIAfmMo%2BvLbwp8EAPzFQPTnN4ZfBADcDEMSvzUcBADxDEIevzkIAMIZglx%2Be9IJAGIZgNvtn%2F%2F%2B7%2BpLWMo7QDIBQCQH%2F6%2FxFwHeBTIJAOI48P8%2B%2BiLAO0EeAUAUB%2F3HYy8CvBtkEQDEcMDfH3kR4B0hhwAggoP98XEXAd4VMggA2nOgPz%2FqIsA7Q38CgNYc5K%2BPuQjw7tCbAKAtB%2Fj5ERcB3iH6EgC05OC%2BbrxFgHeJngQA7Tiwrx9tEeCdoh8BQCsO6nFjLQK8W%2FQiAGjDAT1%2BpEWAd4w%2BBAAtOJjnjbMI8K7RgwCgPAfy%2FFEWAd456hMAlOYgXjfGIsC7R20CgLIcwOtHePXfX807SGUCgJIcvPuM7y7XsYp3kaoEAOU4cPcb3d2uZzbvJBUJAEpx0O47trte1yzeTaoRAJThgN1%2FZHe%2FvtG8o1QiACjBwVpnXKtc5yjeVaoQAGzPgVpvVKtd79W8s1QgANiag7TumFa97qt4d9mdAGBbDlAjWp13mJ0JALbk4Owx%2Fh3u4SzvMrsSAGzHgdlrODvdy6u80%2BxIALAVB2XPwex4T8%2FybrMbAcA2HJC9h7LzvT3KO85OBABbcDBmDGTCPd7jXWcXAoDlHIhZw5h0rx%2FxzrMDAcBSDsLMQUy857e8%2B6wmAFjGAZg9hMn3%2FpNvgJUEAEs4%2BAzg7eYZ3G6%2BBdYRAEznwDN8v%2FMsfBOsIQCYykFn8N7jmfg2mE8AMI0DztB9xrPxjTCXAGAKB5uBe4Rn5FthHgHAcA40w%2FYMz8o3wxwCgKEcZAbtFZ6Zb4fxBADDOMAM2RmenW%2BIsQQAQzi4DNgVPEPfEuMIAC7nwDJcV%2FIsfVOMIQC4lIPKYI3gmfq2uJ4A4DIOKEM1kmfrG%2BNaAoBLOJgM1AyesW%2BN6wgATnMgGaaZPGvfHNcQAJziIDJIK3jmvj3OEwC8zAFkiFby7H2DnCMAeJkD2AG8kmfvG%2BQcAcApDiBDtIJn7tvjPAHAaQ4igzSTZ%2B2b4xoCgEs4kAzTDJ6xb43rCAAu42AyUCN5tr4xriUAuJQDylCN4Jn6trieAOByDiqDdSXP0jfFGAKAIRxYhusKnqFviXEEAMM4uAzYGZ6db4ixBABDOcAM2Ss8M98O4wkAhnOQGbRneFa%2BGeYQAEzhQDNsj%2FCMfCvMIwCYxsFm4D7j2fhGmEsAMJUDztC9xzPxbTCfAGA6B53B%2B51n4ZtgDQHAEg48w3e7eQa3m2%2BBdQQAyzj4sgcw%2Bd5%2F8g2wkgBgKQdg5hAm3vNb3n1WEwAs5yDMGsSke%2F2Id54dCAC24EDMGMaEe7zHu84uBADbcDD2HsjO9%2FYo7zg7EQBsxQHZcyg73tOzvNvsRgCwHQdlr8HsdC%2Bv8k6zoy9fv33%2Fsfoi4D2G41B5PPyGtX8%2FevMvAGzLwXmoOqJVr%2FtK3mF2JgDYmgP0UG1Mq13vCN5ddicA2J6D9FBlVKtc50jeWSoQAJTgQD3sPq67X98M3lWqEACU4WA97Dqyu17XTN5RKhEAlOKAPew2trtdzwreTaoRAJTjoD3sMrq7XMdK3kkqEgCU5MA9rB7f1X9%2FB95FqhIAlOXgPawaYePvHaQ2AUBpDuDD7DE2%2Ft496hMAlOcgPswaZePvnaMHAUALDuTD6HE2%2Ft41%2BhAAtOFgPowaaePvHaMXAUArDujD1WNt%2FL1b9CMAaMdBfbhqtI2%2Fd4qeBAAtObAPZ8fb%2BHuX6EsA0JaD%2B%2FDqiBt%2F7xC9CQBac4Afnh1z4%2B%2FdoT8BQHsO8sOjo278vTNkEABEcKAf7o278feukEMAEMPBfvho5I2%2Fd4QsAoAoDvjD27E3%2Ft4N8ggA4jjoDz9H3%2Fh7J8j05eu37z9WXwSsYPi43Yw%2FufwLALEc%2FHgHSCYAiGYAcvntSScAiGcI8vjNQQDA7XYzCEn81nAQAPAXw9Cf3xh%2BEQDwGwPRl98W%2FiQA4A1D0Y%2FfFP7O%2FwMAn%2FB%2FBdRn%2FOF9%2FgUAPmE8avP7wccEANxhRGryu8HnBAA8wJjU4veC%2BwQAPMio1OB3gscIAHiCcdmb3wceJwDgSUZmT34XeI4AgBcYm734PeB5AgBeZHT24HeA1wgAOMH4rOX5w%2BsEAJxkhNbw3OEcAQAXMEZzed5wngCAixilOTxnuIYAgAsZp7E8X7iOAICLGakxPFe4lgCAAYzVtTxPuJ4AgEGM1jU8RxhDAMBAxusczw%2FGEQAwmBF7jecGYwkAmMCYPcfzgvEEAExi1B7jOcEcAgAmMm6f83xgHgEAkxm593kuMJcAgAWM3Z88D5hPAMAiRu%2FgOcAaAgAWSh%2B%2F9PuHlQQALJY6gqn3DbsQALCBtDFMu1%2FYkQCATaSMYsp9wu4EAGyk%2Bzh2vz%2BoRADAZrqOZNf7gqoEAGyo21h2ux%2FoQADAprqMZpf7gG4EAGys%2BnhWv37oTADA5qqOaNXrhhQCAAqoNqbVrhcSCQAoosqoVrlOSCcAoJDdx3X36wN%2BEQBQzK4ju%2Bt1Ae8TAFDQbmO72%2FUA9wkAKGqX0d3lOoDnCAAobPX4rv77wOsEABS3aoSNP9QmAKCB2WNs%2FKE%2BAQBNzBpl4w89CABoZPQ4G3%2FoQwBAM6NG2vhDLwIAGrp6rI0%2F9CMAoKmrRtv4Q08CABo7O97GH%2FoSANDcqyNu%2FKE3AQABnh1z4w%2F9CQAI8eioG3%2FIIAAgyL1xN%2F6QQwBAmI9G3vhDFgEAgd6OvfGHPAIAQv0cfeMPmb58%2Ffb9x%2BqLAADm8i8AABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQKD%2FAwSyyqPCv%2BebAAAAAElFTkSuQmCC%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image%2Fpng%22%7D%2C%20%7B%22src%22%3A%20%22data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAPV0lEQVR4nO3cy5Hc2hVE0aLGjOCELskCWSGLZIUskHHUAI9Bsl931we4n3NyLQcaQAE3d3DAL1%2B%2Fff9xAwCi%2FGP1BQAA8wkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAAIJAAAIBAAgAAAgkAAAgkAAAgkAAAgEACAAACCQAACCQAACCQAACAQAIAAAIJAAAIJAAg2P%2F%2B86%2FVlwAsIgAg1M%2FxFwGQSQBAoLejLwIgjwCAMB%2BNvQiALAIAgtwbeREAOQQAhHh03EUAZBAAEODZURcB0J8AgOZeHXMRAL0JAGjs7IiLAOhLAEBTV423CICeBAA0dPVoiwDoRwBAM6PGWgRALwIAGhk90iIA%2BhAA0MSscRYB0IMAgAZmj7IIgPoEABS3aoxFANQmAKCw1SO8%2Bu8DrxMAUNQu47vLdQDPEQBQ0G6ju9v1APcJAChm17Hd9bqA9wkAKGT3kd39%2BoBfBAAUUWVcq1wnpBMAUEC1Ua12vZBIAMDmqo5p1euGFAIANlZ9RKtfP3QmAGBTXcazy31ANwIANtRtNLvdD3QgAGAzXcey631BVQIANtJ9JLvfH1QiAGATKeOYcp%2BwOwEAG0gbxbT7hR0JAFgsdQxT7xt2IQBgofQRTL9%2FWEkAwCLG7%2BA5wBoCABYwen%2FyPGA%2BAQCTGbv3eS4wlwCAiYzc5zwfmEcAwCTG7TGeE8whAGACo%2FYczwvGEwAwmDF7jecGYwkAGMiIneP5wTgCAAYxXtfwHGEMAQADGK1reZ5wPQEAFzNWY3iucC0BABcyUmN5vnAdAQAXMU5zeM5wDQEAFzBKc3necJ4AgJOM0RqeO5wjAOAEI7SW5w%2BvEwDwIuOzB78DvEYAwAuMzl78HvA8AQBPMjZ78rvAcwQAPMHI7M3vA48TAPAg41KD3wkeIwDgAUalFr8X3CcA4A5jUpPfDT4nAOATRqQ2vx98TADAB4wH0JkAgHcY%2Fz78lvA%2BAQBvGIx%2B%2FKbwdwIAfmMo%2BvLbwp8EAPzFQPTnN4ZfBADcDEMSvzUcBADxDEIevzkIAMIZglx%2Be9IJAGIZgNvtn%2F%2F%2B7%2BpLWMo7QDIBQCQH%2F6%2FxFwHeBTIJAOI48P8%2B%2BiLAO0EeAUAUB%2F3HYy8CvBtkEQDEcMDfH3kR4B0hhwAggoP98XEXAd4VMggA2nOgPz%2FqIsA7Q38CgNYc5K%2BPuQjw7tCbAKAtB%2Fj5ERcB3iH6EgC05OC%2BbrxFgHeJngQA7Tiwrx9tEeCdoh8BQCsO6nFjLQK8W%2FQiAGjDAT1%2BpEWAd4w%2BBAAtOJjnjbMI8K7RgwCgPAfy%2FFEWAd456hMAlOYgXjfGIsC7R20CgLIcwOtHePXfX807SGUCgJIcvPuM7y7XsYp3kaoEAOU4cPcb3d2uZzbvJBUJAEpx0O47trte1yzeTaoRAJThgN1%2FZHe%2FvtG8o1QiACjBwVpnXKtc5yjeVaoQAGzPgVpvVKtd79W8s1QgANiag7TumFa97qt4d9mdAGBbDlAjWp13mJ0JALbk4Owx%2Fh3u4SzvMrsSAGzHgdlrODvdy6u80%2BxIALAVB2XPwex4T8%2FybrMbAcA2HJC9h7LzvT3KO85OBABbcDBmDGTCPd7jXWcXAoDlHIhZw5h0rx%2FxzrMDAcBSDsLMQUy857e8%2B6wmAFjGAZg9hMn3%2FpNvgJUEAEs4%2BAzg7eYZ3G6%2BBdYRAEznwDN8v%2FMsfBOsIQCYykFn8N7jmfg2mE8AMI0DztB9xrPxjTCXAGAKB5uBe4Rn5FthHgHAcA40w%2FYMz8o3wxwCgKEcZAbtFZ6Zb4fxBADDOMAM2RmenW%2BIsQQAQzi4DNgVPEPfEuMIAC7nwDJcV%2FIsfVOMIQC4lIPKYI3gmfq2uJ4A4DIOKEM1kmfrG%2BNaAoBLOJgM1AyesW%2BN6wgATnMgGaaZPGvfHNcQAJziIDJIK3jmvj3OEwC8zAFkiFby7H2DnCMAeJkD2AG8kmfvG%2BQcAcApDiBDtIJn7tvjPAHAaQ4igzSTZ%2B2b4xoCgEs4kAzTDJ6xb43rCAAu42AyUCN5tr4xriUAuJQDylCN4Jn6trieAOByDiqDdSXP0jfFGAKAIRxYhusKnqFviXEEAMM4uAzYGZ6db4ixBABDOcAM2Ss8M98O4wkAhnOQGbRneFa%2BGeYQAEzhQDNsj%2FCMfCvMIwCYxsFm4D7j2fhGmEsAMJUDztC9xzPxbTCfAGA6B53B%2B51n4ZtgDQHAEg48w3e7eQa3m2%2BBdQQAyzj4sgcw%2Bd5%2F8g2wkgBgKQdg5hAm3vNb3n1WEwAs5yDMGsSke%2F2Id54dCAC24EDMGMaEe7zHu84uBADbcDD2HsjO9%2FYo7zg7EQBsxQHZcyg73tOzvNvsRgCwHQdlr8HsdC%2Bv8k6zoy9fv33%2Fsfoi4D2G41B5PPyGtX8%2FevMvAGzLwXmoOqJVr%2FtK3mF2JgDYmgP0UG1Mq13vCN5ddicA2J6D9FBlVKtc50jeWSoQAJTgQD3sPq67X98M3lWqEACU4WA97Dqyu17XTN5RKhEAlOKAPew2trtdzwreTaoRAJTjoD3sMrq7XMdK3kkqEgCU5MA9rB7f1X9%2FB95FqhIAlOXgPawaYePvHaQ2AUBpDuDD7DE2%2Ft496hMAlOcgPswaZePvnaMHAUALDuTD6HE2%2Ft41%2BhAAtOFgPowaaePvHaMXAUArDujD1WNt%2FL1b9CMAaMdBfbhqtI2%2Fd4qeBAAtObAPZ8fb%2BHuX6EsA0JaD%2B%2FDqiBt%2F7xC9CQBac4Afnh1z4%2B%2FdoT8BQHsO8sOjo278vTNkEABEcKAf7o278feukEMAEMPBfvho5I2%2Fd4QsAoAoDvjD27E3%2Ft4N8ggA4jjoDz9H3%2Fh7J8j05eu37z9WXwSsYPi43Yw%2FufwLALEc%2FHgHSCYAiGYAcvntSScAiGcI8vjNQQDA7XYzCEn81nAQAPAXw9Cf3xh%2BEQDwGwPRl98W%2FiQA4A1D0Y%2FfFP7O%2FwMAn%2FB%2FBdRn%2FOF9%2FgUAPmE8avP7wccEANxhRGryu8HnBAA8wJjU4veC%2BwQAPMio1OB3gscIAHiCcdmb3wceJwDgSUZmT34XeI4AgBcYm734PeB5AgBeZHT24HeA1wgAOMH4rOX5w%2BsEAJxkhNbw3OEcAQAXMEZzed5wngCAixilOTxnuIYAgAsZp7E8X7iOAICLGakxPFe4lgCAAYzVtTxPuJ4AgEGM1jU8RxhDAMBAxusczw%2FGEQAwmBF7jecGYwkAmMCYPcfzgvEEAExi1B7jOcEcAgAmMm6f83xgHgEAkxm593kuMJcAgAWM3Z88D5hPAMAiRu%2FgOcAaAgAWSh%2B%2F9PuHlQQALJY6gqn3DbsQALCBtDFMu1%2FYkQCATaSMYsp9wu4EAGyk%2Bzh2vz%2BoRADAZrqOZNf7gqoEAGyo21h2ux%2FoQADAprqMZpf7gG4EAGys%2BnhWv37oTADA5qqOaNXrhhQCAAqoNqbVrhcSCQAoosqoVrlOSCcAoJDdx3X36wN%2BEQBQzK4ju%2Bt1Ae8TAFDQbmO72%2FUA9wkAKGqX0d3lOoDnCAAobPX4rv77wOsEABS3aoSNP9QmAKCB2WNs%2FKE%2BAQBNzBpl4w89CABoZPQ4G3%2FoQwBAM6NG2vhDLwIAGrp6rI0%2F9CMAoKmrRtv4Q08CABo7O97GH%2FoSANDcqyNu%2FKE3AQABnh1z4w%2F9CQAI8eioG3%2FIIAAgyL1xN%2F6QQwBAmI9G3vhDFgEAgd6OvfGHPAIAQv0cfeMPmb58%2Ffb9x%2BqLAADm8i8AABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQCABAACBBAAABBIAABBIAABAIAEAAIEEAAAEEgAAEEgAAEAgAQAAgQQAAAQSAAAQSAAAQKD%2FAwSyyqPCv%2BebAAAAAElFTkSuQmCC%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image%2Fpng%22%2C%20%22purpose%22%3A%20%22maskable%22%7D%5D%7D" />
+<title>Arrow OS</title>
+<style>html,body,#root{height:100%;margin:0;background:#0C0F14;-webkit-tap-highlight-color:transparent;}</style>
+<script src="https://cdn.tailwindcss.com"></script>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" data-presets="react">
+
+const { useEffect, useRef, useState } = React;
+const AI_MODEL = "claude-sonnet-5";
+window.storage = {
+  async get(k){ const v = localStorage.getItem(k); return v == null ? null : { key:k, value:v }; },
+  async set(k,v){ localStorage.setItem(k,v); return { key:k, value:v }; },
+  async delete(k){ localStorage.removeItem(k); return { key:k, deleted:true }; },
+  async list(p=""){ return { keys: Object.keys(localStorage).filter(x=>x.startsWith(p)) }; },
+};
+
+const ICONS = {
+  "plus": <><line x1="5" y1="12" x2="19" y2="12"/><line x1="12" y1="5" x2="12" y2="19"/></>,
+  "x": <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>,
+  "check": <polyline points="20 6 9 17 4 12"/>,
+  "arrow-up-right": <><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></>,
+  "arrow-down-right": <><line x1="7" y1="7" x2="17" y2="17"/><polyline points="17 7 17 17 7 17"/></>,
+  "triangle-alert": <><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></>,
+  "sparkles": <path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3z"/>,
+  "refresh-cw": <><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></>,
+  "flame": <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>,
+  "bell": <><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></>,
+  "chevron-right": <polyline points="9 18 15 12 9 6"/>,
+  "chevron-left": <polyline points="15 18 9 12 15 6"/>,
+  "layout-grid": <><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></>,
+  "building-2": <><path d="M6 22V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v18"/><path d="M6 12H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2"/><path d="M16 9h2a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-2"/><line x1="9" y1="7" x2="13" y2="7"/><line x1="9" y1="11" x2="13" y2="11"/><line x1="9" y1="15" x2="13" y2="15"/></>,
+  "pie-chart": <><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></>,
+};
+function Icon({ name, size = 16, color, className, style, strokeWidth = 2 }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24"
+      fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"
+      className={className} style={{ color, ...style }}>
+      {ICONS[name] || null}
+    </svg>
+  );
+}
+
+
+/* ═════════════════════════════════════════════════════════════
+   ARROW OS · executive operating system (MVP v4)
+   Tabs: Home · Business · Portfolio · Habits · Reminders
+   Numbers are direct-edit fields. Per-company AI briefs + ROI.
+   Browser notifications for due reminders.
+   ═════════════════════════════════════════════════════════════ */
+
+const C = {
+  bg: "#0C0F14", card: "#141922", cardHi: "#181E29", nav: "#0E1218",
+  line: "#232B36", lineSoft: "#1A212B",
+  text: "#E7EAEE", dim: "#8B93A0", faint: "#59616D",
+  gold: "#C7A667", goldDim: "#8A7846", up: "#6FAE88", down: "#C77E6B",
+};
+const FS = 'system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
+const FM = 'ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace';
+const KEY = "arrowos_v5";
+
+const uid = () =>
+  typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID()
+    : String(Date.now()) + Math.random().toString(36).slice(2);
+const todayStr = () => new Date().toISOString().slice(0, 10);
+
+function parseAmount(raw, fb) {
+  if (raw == null) return fb;
+  let str = String(raw).trim().toLowerCase().replace(/[,\s]/g, "");
+  if (str === "") return 0;
+  let m = 1; const last = str[str.length - 1];
+  if (last === "k") { m = 1e3; str = str.slice(0, -1); }
+  else if (last === "m") { m = 1e6; str = str.slice(0, -1); }
+  else if (last === "b") { m = 1e9; str = str.slice(0, -1); }
+  const n = parseFloat(str.replace(/[^0-9.\-]/g, ""));
+  return isNaN(n) ? fb : Math.round(n * m);
+}
+const fmt = (n) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(Math.round(Number(n) || 0));
+
+/* ── portfolio math ── */
+function holdingValue(key, h) {
+  if (key === "etf" || key === "saudi" || key === "us") return (+h.shares || 0) * (+h.price || 0);
+  if (key === "deposit") return (+h.principal || 0);
+  return (+h.value || 0); // cash, other, custom
+}
+const typeValue = (t) => (t.holdings || []).reduce((a, h) => a + holdingValue(t.key, h), 0);
+const portfolioTotal = (s) => (s.portfolio || []).reduce((a, t) => a + typeValue(t), 0);
+function maturityValue(h) {
+  const p = +h.principal || 0, r = (+h.rate || 0) / 100;
+  if (!h.maturity) return p;
+  const start = h.start ? new Date(h.start) : new Date();
+  const mat = new Date(h.maturity);
+  const years = Math.max(0, (mat - start) / (365.25 * 24 * 3600 * 1000));
+  return Math.round(p * (1 + r * years));
+}
+function daysToMaturity(h) {
+  if (!h.maturity) return null;
+  return Math.ceil((new Date(h.maturity) - new Date()) / (24 * 3600 * 1000));
+}
+function stockPL(h) {
+  const basis = (+h.shares || 0) * (+h.cost || 0);
+  const val = (+h.shares || 0) * (+h.price || 0);
+  return { basis, val, gain: val - basis, pct: basis ? ((val - basis) / basis) * 100 : 0 };
+}
+function newHolding(key) {
+  const id = uid();
+  if (key === "etf") return { id, name: "New fund", shares: 0, price: 0, div: 0, nextDiv: "" };
+  if (key === "saudi" || key === "us") return { id, name: "New position", shares: 0, cost: 0, price: 0 };
+  if (key === "deposit") return { id, name: "New deposit", principal: 0, rate: 0, start: "", maturity: "" };
+  return { id, name: "New item", value: 0 };
+}
+const cashTotal = (s) => (s.portfolio || []).filter((t) => t.key === "cash").reduce((a, t) => a + typeValue(t), 0);
+const calcNW = (s) => portfolioTotal(s) - s.liabilities.reduce((a, x) => a + (+x.value || 0), 0);
+
+function deltaSince(history, days) {
+  if (!history || !history.length) return null;
+  const t = new Date(); t.setDate(t.getDate() - days);
+  const tstr = t.toISOString().slice(0, 10);
+  let base = null;
+  for (const h of history) { if (h.date <= tstr) base = h; else break; }
+  if (!base) return null;
+  const cur = history[history.length - 1].nw;
+  return { abs: cur - base.nw, pct: base.nw ? ((cur - base.nw) / base.nw) * 100 : 0 };
+}
+function lastDays(n) {
+  const out = [];
+  for (let i = n - 1; i >= 0; i--) {
+    const d = new Date(); d.setDate(d.getDate() - i);
+    out.push({ date: d.toISOString().slice(0, 10), label: "SMTWTFS"[d.getDay()] });
+  }
+  return out;
+}
+function streak(log) {
+  let n = 0; const d = new Date();
+  for (;;) { const k = d.toISOString().slice(0, 10); if (log && log[k]) { n++; d.setDate(d.getDate() - 1); } else break; }
+  return n;
+}
+
+const SEED = {
+  currency: "SAR",
+  portfolio: [
+    { id: uid(), key: "etf", name: "ETFs & Funds", holdings: [
+      { id: uid(), name: "S&P 500 ETF", shares: 1200, price: 520, div: 6.2, nextDiv: "2026-09-15" },
+    ] },
+    { id: uid(), key: "saudi", name: "Saudi Stocks", holdings: [
+      { id: uid(), name: "Saudi Aramco", shares: 5000, cost: 28, price: 31 },
+      { id: uid(), name: "Al Rajhi Bank", shares: 3000, cost: 72, price: 88 },
+    ] },
+    { id: uid(), key: "us", name: "US Stocks", holdings: [
+      { id: uid(), name: "Apple", shares: 400, cost: 150, price: 210 },
+    ] },
+    { id: uid(), key: "deposit", name: "Term Deposits", holdings: [
+      { id: uid(), name: "SNB 12-mo deposit", principal: 2600000, rate: 5.2, start: "2026-01-15", maturity: "2027-01-15" },
+    ] },
+    { id: uid(), key: "cash", name: "Cash", holdings: [
+      { id: uid(), name: "Current account", value: 2100000 },
+    ] },
+  ],
+  liabilities: [{ id: uid(), label: "Loans", value: 420000 }],
+  burn: 180000,
+  priorities: [
+    { id: uid(), text: "Review Q2 numbers before board sync", done: false },
+    { id: uid(), text: "Call back on the acquisition target", done: false },
+  ],
+  alerts: [
+    { id: uid(), kind: "risk", text: "Loan rate resets next month — check exposure" },
+    { id: uid(), kind: "opp", text: "US portfolio running hot — consider trimming" },
+  ],
+  businesses: [
+    {
+      id: uid(), name: "Company One", ownership: 60, revenue: 4200000, profit: 900000, cash: 1300000, invested: 2000000,
+      todos: [
+        { id: uid(), text: "Sign the new office lease", done: false },
+        { id: uid(), text: "Hire an operations manager", done: false },
+      ],
+      kpis: [{ id: uid(), label: "MRR", value: 350000, unit: "SAR" }, { id: uid(), label: "Active clients", value: 48, unit: "" }],
+      brief: null,
+    },
+  ],
+  habits: [
+    { id: uid(), name: "Gym", log: {} },
+    { id: uid(), name: "Read 30 min", log: {} },
+  ],
+  reminders: [{ id: uid(), text: "Follow up with lead investor", due: null, done: false }],
+  baseline: null, history: [], brief: null,
+};
+
+/* ── shared bits ─────────────────────────────────────────────── */
+function Spark({ data, color }) {
+  if (!data || data.length < 2) return null;
+  const w = 300, h = 44, pad = 4;
+  const ys = data.map((d) => d.nw), min = Math.min(...ys), max = Math.max(...ys), r = max - min || 1;
+  const pt = (d, i) => [pad + (i / (data.length - 1)) * (w - 2 * pad), pad + (1 - (d.nw - min) / r) * (h - 2 * pad)];
+  const line = data.map((d, i) => pt(d, i).join(",")).join(" ");
+  const [lx, ly] = pt(data[data.length - 1], data.length - 1);
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} width="100%" height={h} preserveAspectRatio="none" style={{ display: "block" }}>
+      <polyline points={line} fill="none" stroke={color} strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" />
+      <circle cx={lx} cy={ly} r="2.4" fill={color} />
+    </svg>
+  );
+}
+
+/* Direct-edit number field — no tap-to-reveal. Just type. */
+function Num({ value, onCommit, prefix, size = "sm", tone = C.text, bold, full }) {
+  const [foc, setFoc] = useState(false);
+  const [draft, setDraft] = useState("");
+  if (size === "hero") {
+    return (
+      <div className="text-5xl" style={{ fontFamily: FM, fontWeight: 600, color: tone }}>
+        {prefix && <span style={{ color: C.faint, fontSize: "0.62em", marginRight: 4 }}>{prefix}</span>}{fmt(value)}
+      </div>
+    );
+  }
+  const sizeCls = size === "md" ? "text-lg" : "text-sm";
+  return (
+    <span className="inline-flex items-baseline gap-1" style={{ justifyContent: full ? "flex-start" : "flex-end", width: full ? "100%" : "auto" }}>
+      {prefix && <span style={{ color: C.faint, fontSize: "0.62em" }}>{prefix}</span>}
+      <input inputMode="decimal"
+        className={`${sizeCls} tabular-nums bg-transparent outline-none`}
+        style={{ fontFamily: FM, color: tone, fontWeight: bold ? 600 : 400, border: "none", borderBottom: `1px solid ${C.lineSoft}`, padding: "0 0 1px", textAlign: full ? "left" : "right", width: full ? "100%" : "13ch", maxWidth: full ? "100%" : "46vw" }}
+        value={foc ? draft : fmt(value)}
+        onFocus={(e) => { setDraft(String(value)); setFoc(true); const t = e.target; requestAnimationFrame(() => { try { t.select(); } catch (_) {} }); }}
+        onChange={(e) => setDraft(e.target.value)}
+        onBlur={() => { onCommit(parseAmount(draft, value)); setFoc(false); }}
+        onKeyDown={(e) => { if (e.key === "Enter") e.currentTarget.blur(); if (e.key === "Escape") setFoc(false); }} />
+    </span>
+  );
+}
+
+function EditText({ value, onCommit, placeholder, strike, autoEdit, onEnter, style }) {
+  const [ed, setEd] = useState(!!autoEdit); const [d, setD] = useState(value);
+  if (ed) return (
+    <input autoFocus value={d} onChange={(e) => setD(e.target.value)} onBlur={() => { onCommit(d.trim() || value); setEd(false); }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") { onCommit(d.trim() || value); setEd(false); if (onEnter && d.trim()) onEnter(); }
+        if (e.key === "Escape") { setD(value); setEd(false); }
+      }}
+      className="w-full bg-transparent outline-none text-sm"
+      style={{ color: C.text, borderBottom: `1px solid ${C.gold}`, fontFamily: FS, padding: "1px 0", ...style }} placeholder={placeholder} />
+  );
+  return (
+    <button onClick={() => { setD(value); setEd(true); }} className="text-left text-sm w-full cursor-text"
+      style={{ color: C.text, textDecoration: strike ? "line-through" : "none", opacity: strike ? 0.5 : 1, background: "none", border: "none", padding: 0, fontFamily: FS, ...style }}>
+      {value || <span style={{ color: C.faint }}>{placeholder}</span>}
+    </button>
+  );
+}
+function Card({ children, title, right, style, delay = 0 }) {
+  return (
+    <section className="rounded-2xl p-5 aos-rise" style={{ background: C.card, border: `1px solid ${C.line}`, animationDelay: `${delay}ms`, ...style }}>
+      {title && (
+        <header className="flex items-center justify-between mb-4">
+          <span className="uppercase" style={{ color: C.dim, fontSize: 11, letterSpacing: "0.14em", fontFamily: FS }}>{title}</span>{right}
+        </header>
+      )}
+      {children}
+    </section>
+  );
+}
+function Row({ children }) { return <div className="group flex items-center gap-3 py-1.5" style={{ borderBottom: `1px solid ${C.lineSoft}` }}>{children}</div>; }
+function AddRow({ label, onClick }) {
+  return <button onClick={onClick} className="flex items-center gap-1.5 mt-2 text-xs opacity-70 hover:opacity-100 transition-opacity"
+    style={{ color: C.gold, background: "none", border: "none", fontFamily: FS }}><Icon name="plus" size={13} /> {label}</button>;
+}
+function Kill({ onClick }) {
+  return <button onClick={onClick} className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+    style={{ color: C.faint, background: "none", border: "none", lineHeight: 0 }} title="Remove"><Icon name="x" size={13} /></button>;
+}
+function Pill({ label, d }) {
+  const has = d != null, pos = has && d.pct >= 0;
+  return (
+    <span className="inline-flex items-baseline gap-1" style={{ fontFamily: FM, fontSize: 11.5 }}
+      title={has ? `${label}: ${d.abs >= 0 ? "+" : "−"}${fmt(Math.abs(d.abs))}` : "Builds as you use Arrow OS daily"}>
+      <span style={{ color: C.faint }}>{label}</span>
+      <span style={{ color: !has ? C.faint : pos ? C.up : C.down }}>{!has ? "—" : `${pos ? "+" : "−"}${Math.abs(d.pct).toFixed(1)}%`}</span>
+    </span>
+  );
+}
+function Stat({ label, value, sub, tone }) {
+  return (
+    <div className="flex-1">
+      <div style={{ color: C.dim, fontSize: 11, textTransform: "uppercase", letterSpacing: "0.1em" }}>{label}</div>
+      <div style={{ fontFamily: FM, fontSize: 18, fontWeight: 600, color: tone || C.text, marginTop: 3 }}>{value}</div>
+      {sub && <div style={{ color: C.faint, fontSize: 11, marginTop: 2 }}>{sub}</div>}
+    </div>
+  );
+}
+function Fact({ label, children }) {
+  return (
+    <div style={{ minWidth: 0 }}>
+      <div style={{ color: C.faint, fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em" }}>{label}</div>
+      <div style={{ marginTop: 2 }}>{children}</div>
+    </div>
+  );
+}
+function DateField({ value, onChange }) {
+  return (
+    <input type="date" value={value || ""} onChange={(e) => onChange(e.target.value || "")}
+      className="bg-transparent outline-none text-sm w-full"
+      style={{ color: C.text, fontFamily: FM, border: "none", borderBottom: `1px solid ${C.lineSoft}`, colorScheme: "dark", padding: "0 0 1px" }} />
+  );
+}
+function BriefItems({ items, levelColor }) {
+  return (
+    <div className="flex flex-col gap-2.5">
+      {items.map((it, i) => (
+        <div key={i} className="flex items-start gap-3">
+          <span style={{ width: 6, height: 6, borderRadius: 6, background: levelColor(it.level), marginTop: 7, flexShrink: 0 }} />
+          <p style={{ fontSize: 14, lineHeight: 1.5 }}>{it.text}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ═══════════════════════════ App ════════════════════════════ */
+function App() {
+  const [s, setS] = useState(SEED);
+  const [loaded, setLoaded] = useState(false);
+  const [tab, setTab] = useState("home");
+  const [portfolioView, setPortfolioView] = useState(null);
+  const [autoEditId, setAutoEditId] = useState(null);
+  const [briefLoading, setBriefLoading] = useState(false);
+  const [briefErr, setBriefErr] = useState(null);
+  const [coLoading, setCoLoading] = useState(null);
+  const [notifPerm, setNotifPerm] = useState(typeof Notification !== "undefined" ? Notification.permission : "unsupported");
+  const [hasKey, setHasKey] = useState(typeof localStorage !== "undefined" && !!localStorage.getItem("arrowos_api_key"));
+  const sessionBase = useRef(null);
+  const briefTried = useRef(false);
+  const notifiedRef = useRef(false);
+  const now = useRef(new Date());
+  const patch = (fn) => setS((p) => fn({ ...p }));
+
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      let data = null;
+      try { const r = await window.storage.get(KEY); if (r && r.value) data = JSON.parse(r.value); } catch (e) {}
+      const init = data || SEED; const nw = calcNW(init);
+      sessionBase.current = data && typeof data.baseline === "number" ? data.baseline : nw;
+      const next = { ...init, baseline: nw };
+      if (!alive) return; setS(next); setLoaded(true);
+      try { await window.storage.set(KEY, JSON.stringify(next)); } catch (e) {}
+    })();
+    return () => { alive = false; };
+  }, []);
+
+  useEffect(() => {
+    if (!loaded) return;
+    const t = setTimeout(async () => { try { await window.storage.set(KEY, JSON.stringify(s)); } catch (e) {} }, 400);
+    return () => clearTimeout(t);
+  }, [s, loaded]);
+
+  const nw = calcNW(s);
+
+  useEffect(() => {
+    if (!loaded) return;
+    setS((p) => {
+      const t = todayStr(); const hist = [...(p.history || [])]; const cur = calcNW(p);
+      const i = hist.findIndex((x) => x.date === t);
+      if (i >= 0) { if (hist[i].nw === cur) return p; hist[i] = { date: t, nw: cur }; }
+      else hist.push({ date: t, nw: cur });
+      return { ...p, history: hist.slice(-120) };
+    });
+  }, [nw, loaded]);
+
+  /* ── notifications ── */
+  const setApiKey = () => { const k = prompt("Paste your Anthropic API key (stored only on this device):", localStorage.getItem("arrowos_api_key") || ""); if (k !== null) { localStorage.setItem("arrowos_api_key", k.trim()); setHasKey(!!k.trim()); } };
+  function enableNotifs() {
+    try {
+      if (typeof Notification === "undefined") { setNotifPerm("unsupported"); return; }
+      Notification.requestPermission().then((p) => setNotifPerm(p)).catch(() => setNotifPerm("unsupported"));
+    } catch (e) { setNotifPerm("unsupported"); }
+  }
+  function fireNotif(title, body) {
+    try { if (typeof Notification !== "undefined" && Notification.permission === "granted") new Notification(title, { body }); } catch (e) {}
+  }
+  useEffect(() => {
+    if (!loaded || notifiedRef.current || notifPerm !== "granted") return;
+    notifiedRef.current = true;
+    const due = s.reminders.filter((r) => !r.done && r.due && r.due <= todayStr());
+    if (due.length) fireNotif(`${due.length} reminder${due.length > 1 ? "s" : ""} due`, due.slice(0, 3).map((r) => r.text).join(" · "));
+    // eslint-disable-next-line
+  }, [loaded, notifPerm]);
+
+  /* ── morning brief (cross-domain) ── */
+  async function generateBrief() {
+    setBriefLoading(true); setBriefErr(null);
+    const __key = localStorage.getItem("arrowos_api_key") || "";
+    if (!__key) { setBriefErr("Add your Anthropic API key \u2014 tap 'Add AI key' at top right \u2014 to enable the brief."); setBriefLoading(false); return; }
+    const ta = portfolioTotal(s);
+    const alloc = s.portfolio.map((t) => `${t.name} ${fmt(typeValue(t))} (${ta ? Math.round((typeValue(t) / ta) * 100) : 0}%)`).join("; ");
+    const cash = cashTotal(s);
+    const runway = s.burn > 0 ? (cash / s.burn).toFixed(1) : "n/a";
+    const biz = s.businesses.map((b) => `${b.name}: revenue ${fmt(b.revenue)}, profit ${fmt(b.profit)}, invested ${fmt(b.invested)}`).join("; ") || "none";
+    const prios = s.priorities.map((p) => `${p.done ? "[done]" : "[open]"} ${p.text}`).join("; ") || "none";
+    const rem = s.reminders.filter((r) => !r.done).map((r) => `${r.text}${r.due ? " (due " + r.due + ")" : ""}`).join("; ") || "none";
+    const summary =
+`Currency: ${s.currency}
+Net worth: ${fmt(nw)}
+Allocation: ${alloc}
+Cash: ${fmt(cash)}; Monthly burn: ${fmt(s.burn)}; Runway: ${runway} months
+Businesses: ${biz}
+Open priorities: ${prios}
+Open reminders: ${rem}`;
+    try {
+      const res = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST", headers: { "content-type": "application/json", "x-api-key": __key, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
+        body: JSON.stringify({
+          model: AI_MODEL, max_tokens: 1000,
+          system: "You are the executive advisor inside Arrow OS, a private command center for an investor and capital allocator who owns operating businesses. You reason across wealth AND operations: concentration, runway, margins, return on invested capital, neglected priorities, looming reminders. Sharp, specific, quantitative, brief. No pleasantries. Respond with ONLY a JSON array, no markdown, no preamble.",
+          messages: [{ role: "user", content: `My position:\n\n${summary}\n\nGive 3-4 observations on what deserves attention today, connecting wealth and business where it matters. Reference real figures. Return ONLY a JSON array of objects {"text": string, "level": "risk"|"watch"|"good"}.` }],
+        }),
+      });
+      const data = await res.json();
+      const text = (data.content || []).filter((b) => b.type === "text").map((b) => b.text).join("\n");
+      const parsed = JSON.parse(text.replace(/```json/gi, "").replace(/```/g, "").trim());
+      const items = Array.isArray(parsed) ? parsed.filter((x) => x && x.text).slice(0, 4) : [];
+      if (!items.length) throw new Error("empty");
+      patch((d) => { d.brief = { items, at: Date.now(), nw }; return d; });
+    } catch (e) { setBriefErr("Couldn't reach the advisor. Tap refresh to retry."); }
+    finally { setBriefLoading(false); }
+  }
+  useEffect(() => {
+    if (!loaded || briefTried.current) return; briefTried.current = true;
+    if (!s.brief) generateBrief(); // eslint-disable-next-line
+  }, [loaded]);
+
+  /* ── per-company brief ── */
+  async function companyBrief(b) {
+    setCoLoading(b.id);
+    const __key = localStorage.getItem("arrowos_api_key") || "";
+    if (!__key) { setCoLoading(null); patch((d) => { d.businesses = d.businesses.map((x) => x.id === b.id ? { ...x, brief: { error: true } } : x); return d; }); return; }
+    const margin = b.revenue ? Math.round((b.profit / b.revenue) * 100) : 0;
+    const roi = b.invested ? ((b.profit / b.invested) * 100).toFixed(1) : "n/a";
+    const kpis = b.kpis.map((k) => `${k.label}: ${fmt(k.value)} ${k.unit}`.trim()).join("; ") || "none";
+    const openTodos = (b.todos || []).filter((t) => !t.done).map((t) => t.text).join("; ") || "none";
+    const share = fmt((+b.profit || 0) * (+b.ownership || 0) / 100);
+    const content =
+`Company: ${b.name}
+My ownership: ${b.ownership || 0}%
+Last stated revenue: ${fmt(b.revenue)} ${s.currency}
+Profit: ${fmt(b.profit)} (margin ${margin}%); my profit share at ${b.ownership || 0}%: ${share}
+Cash on hand: ${fmt(b.cash)}
+Capital I invested: ${fmt(b.invested)} (return on invested capital ≈ ${roi}%)
+Open to-dos: ${openTodos}
+KPIs: ${kpis}`;
+    try {
+      const res = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST", headers: { "content-type": "application/json", "x-api-key": __key, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
+        body: JSON.stringify({
+          model: AI_MODEL, max_tokens: 700,
+          system: "You are a company analyst inside Arrow OS advising an investor-owner. Given ONE company's numbers and open to-dos, give 2-3 sharp, specific, quantitative observations: the return on the capital they invested and their profit share at their ownership stake, whether cash covers operations, and whether the open to-dos reflect the right priorities for this company. Lead with what matters most to an owner. No fluff. Respond ONLY with a JSON array of {\"text\": string, \"level\": \"risk\"|\"watch\"|\"good\"}.",
+          messages: [{ role: "user", content }],
+        }),
+      });
+      const data = await res.json();
+      const text = (data.content || []).filter((x) => x.type === "text").map((x) => x.text).join("\n");
+      const parsed = JSON.parse(text.replace(/```json/gi, "").replace(/```/g, "").trim());
+      const items = Array.isArray(parsed) ? parsed.filter((x) => x && x.text).slice(0, 3) : [];
+      if (!items.length) throw new Error("empty");
+      patch((d) => { d.businesses = d.businesses.map((x) => x.id === b.id ? { ...x, brief: { items, at: Date.now() } } : x); return d; });
+    } catch (e) {
+      patch((d) => { d.businesses = d.businesses.map((x) => x.id === b.id ? { ...x, brief: { error: true } } : x); return d; });
+    } finally { setCoLoading(null); }
+  }
+
+  const cash = cashTotal(s);
+  const runway = s.burn > 0 ? cash / s.burn : null;
+  const delta = sessionBase.current == null ? 0 : nw - sessionBase.current;
+  const pct = sessionBase.current ? (delta / sessionBase.current) * 100 : 0;
+  const d1w = deltaSince(s.history, 7), d1m = deltaSince(s.history, 30);
+  const bizRev = s.businesses.reduce((a, b) => a + (+b.revenue || 0), 0);
+  const bizProfit = s.businesses.reduce((a, b) => a + (+b.profit || 0), 0);
+  const bizInvested = s.businesses.reduce((a, b) => a + (+b.invested || 0), 0);
+  const openTodosTotal = s.businesses.reduce((a, b) => a + (b.todos || []).filter((t) => !t.done).length, 0);
+  const profitShareTotal = s.businesses.reduce((a, b) => a + (+b.profit || 0) * (+b.ownership || 0) / 100, 0);
+  const habitsToday = s.habits.filter((h) => h.log && h.log[todayStr()]).length;
+  const dueCount = s.reminders.filter((r) => !r.done && r.due && r.due <= todayStr()).length;
+  const levelColor = (lv) => (lv === "risk" ? C.down : lv === "good" ? C.up : C.gold);
+
+  const hr = now.current.getHours();
+  const greeting = hr < 12 ? "Good morning." : hr < 18 ? "Good afternoon." : "Good evening.";
+  const dateStr = now.current.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" });
+
+  const upd = (key, id, field, val) => patch((d) => { d[key] = d[key].map((x) => x.id === id ? { ...x, [field]: val } : x); return d; });
+  const del = (key, id) => patch((d) => { d[key] = d[key].filter((x) => x.id !== id); return d; });
+  const updKpi = (bid, kid, field, val) => patch((d) => { d.businesses = d.businesses.map((x) => x.id === bid ? { ...x, kpis: x.kpis.map((y) => y.id === kid ? { ...y, [field]: val } : y) } : x); return d; });
+  const updTodo = (bid, tid, field, val) => patch((d) => { d.businesses = d.businesses.map((x) => x.id === bid ? { ...x, todos: (x.todos || []).map((y) => y.id === tid ? { ...y, [field]: val } : y) } : x); return d; });
+  const delTodo = (bid, tid) => patch((d) => { d.businesses = d.businesses.map((x) => x.id === bid ? { ...x, todos: (x.todos || []).filter((y) => y.id !== tid) } : x); return d; });
+  const addTodo = (bid) => { const id = uid(); setAutoEditId(id); patch((d) => { d.businesses = d.businesses.map((x) => x.id === bid ? { ...x, todos: [...(x.todos || []), { id, text: "", done: false }] } : x); return d; }); };
+
+  const updType = (tid, field, val) => patch((d) => { d.portfolio = d.portfolio.map((t) => t.id === tid ? { ...t, [field]: val } : t); return d; });
+  const delType = (tid) => patch((d) => { d.portfolio = d.portfolio.filter((t) => t.id !== tid); return d; });
+  const updHolding = (tid, hid, field, val) => patch((d) => { d.portfolio = d.portfolio.map((t) => t.id === tid ? { ...t, holdings: t.holdings.map((h) => h.id === hid ? { ...h, [field]: val } : h) } : t); return d; });
+  const delHolding = (tid, hid) => patch((d) => { d.portfolio = d.portfolio.map((t) => t.id === tid ? { ...t, holdings: t.holdings.filter((h) => h.id !== hid) } : t); return d; });
+  const addHolding = (tid, key) => { const h = newHolding(key); setAutoEditId(h.id); patch((d) => { d.portfolio = d.portfolio.map((t) => t.id === tid ? { ...t, holdings: [...t.holdings, h] } : t); return d; }); };
+  const addPriority = () => { const id = uid(); setAutoEditId(id); patch((d) => { d.priorities = [...d.priorities, { id, text: "", done: false }]; return d; }); };
+  const addAlert = () => { const id = uid(); setAutoEditId(id); patch((d) => { d.alerts = [...d.alerts, { id, kind: "risk", text: "" }]; return d; }); };
+  const addReminder = () => { const id = uid(); setAutoEditId(id); patch((d) => { d.reminders = [...d.reminders, { id, text: "", due: null, done: false }]; return d; }); };
+
+  if (!loaded) return <div style={{ background: C.bg, minHeight: "100vh", display: "grid", placeItems: "center" }}>
+    <span style={{ color: C.goldDim, fontFamily: FM, letterSpacing: "0.3em" }}>◆ ARROW OS</span></div>;
+
+  const briefStale = s.brief && s.brief.nw !== nw;
+
+  /* ── HOME ── */
+  const renderHome = () => (
+    <>
+      <Card title="Morning Brief" delay={20} style={{ background: "linear-gradient(180deg,#161B24,#131822)", marginBottom: 14 }}
+        right={<button onClick={generateBrief} disabled={briefLoading} className="flex items-center gap-1.5 text-xs"
+          style={{ color: C.gold, background: "none", border: `1px solid ${C.line}`, borderRadius: 7, padding: "3px 9px", fontFamily: FS }}>
+          <Icon name="refresh-cw" size={12} className={briefLoading ? "aos-spin" : ""} /> {briefLoading ? "Reading…" : "Refresh"}</button>}>
+        <div className="flex items-center gap-2 mb-3" style={{ color: C.gold }}><Icon name="sparkles" size={15} />
+          <span style={{ fontSize: 13, color: C.dim }}>What deserves your attention</span></div>
+        {briefLoading && !s.brief && <p className="aos-pulse" style={{ color: C.dim, fontSize: 14 }}>Reading your position…</p>}
+        {briefErr && !briefLoading && <p style={{ color: C.down, fontSize: 13 }}>{briefErr}</p>}
+        {s.brief && (
+          <>
+            <BriefItems items={s.brief.items} levelColor={levelColor} />
+            <div style={{ color: C.faint, fontSize: 11, marginTop: 8 }}>
+              {briefStale ? "Numbers changed — refresh to update." : `Generated ${new Date(s.brief.at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}`}</div>
+          </>
+        )}
+      </Card>
+
+      <Card title="Net Worth" delay={50} style={{ marginBottom: 14 }}>
+        <Num value={nw} size="hero" bold prefix={s.currency} />
+        <div className="flex items-center gap-4 flex-wrap mt-3">
+          {delta === 0 ? <span style={{ color: C.faint, fontSize: 12 }}>· No change since you last opened</span> :
+            <span className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1"
+              style={{ color: delta > 0 ? C.up : C.down, background: (delta > 0 ? C.up : C.down) + "1A", fontFamily: FM, fontSize: 12 }}>
+              {delta > 0 ? <Icon name="arrow-up-right" size={13} /> : <Icon name="arrow-down-right" size={13} />}{delta > 0 ? "+" : "−"}{fmt(Math.abs(delta))} ({Math.abs(pct).toFixed(1)}%) since open</span>}
+          <Pill label="1W" d={d1w} /><Pill label="1M" d={d1m} />
+        </div>
+        {s.history && s.history.length >= 2 && <div className="mt-4"><Spark data={s.history} color={C.gold} /></div>}
+      </Card>
+
+      <div className="grid grid-cols-2 gap-3 mb-3">
+        <Card delay={70} style={{ padding: 16 }}><Stat label="Cash" value={`${s.currency} ${fmt(cash)}`} sub={runway == null ? "—" : `${runway.toFixed(1)} mo runway`} tone={runway != null && runway < 6 ? C.down : C.text} /></Card>
+        <Card delay={80} style={{ padding: 16 }}><Stat label="Businesses" value={`${s.currency} ${fmt(bizRev)}`} sub={`${s.businesses.length} co · ${fmt(bizProfit)} profit`} /></Card>
+        <Card delay={90} style={{ padding: 16 }}><Stat label="Habits today" value={`${habitsToday}/${s.habits.length}`} sub="done" tone={C.up} /></Card>
+        <Card delay={100} style={{ padding: 16 }}><Stat label="Reminders" value={`${dueCount}`} sub="due or overdue" tone={dueCount ? C.down : C.text} /></Card>
+      </div>
+
+      <Card title="Today's Priorities" delay={120} style={{ marginBottom: 14 }}>
+        {s.priorities.length === 0 && <p style={{ color: C.faint, fontSize: 13 }}>Nothing set. Add today's first priority.</p>}
+        <div className="flex flex-col gap-2">
+          {s.priorities.map((p) => (
+            <div key={p.id} className="group flex items-start gap-2.5">
+              <button onClick={() => upd("priorities", p.id, "done", !p.done)} className="mt-0.5 shrink-0 rounded"
+                style={{ width: 16, height: 16, border: `1.5px solid ${p.done ? C.up : C.line}`, background: p.done ? C.up + "22" : "transparent", display: "grid", placeItems: "center", padding: 0 }}>
+                {p.done && <Icon name="check" size={11} color={C.up} />}</button>
+              <div className="flex-1 min-w-0"><EditText value={p.text} strike={p.done} autoEdit={autoEditId === p.id} onEnter={addPriority}
+                onCommit={(v) => upd("priorities", p.id, "text", v)} placeholder="Priority" /></div>
+              <Kill onClick={() => del("priorities", p.id)} />
+            </div>
+          ))}
+        </div>
+        <AddRow label="Add priority" onClick={addPriority} />
+      </Card>
+
+      <Card title="Alerts" delay={140}>
+        {s.alerts.length === 0 && <p style={{ color: C.faint, fontSize: 13 }}>No flags. You're clear.</p>}
+        <div className="flex flex-col gap-2.5">
+          {s.alerts.map((al) => (
+            <div key={al.id} className="group flex items-start gap-2.5">
+              <button onClick={() => upd("alerts", al.id, "kind", al.kind === "risk" ? "opp" : "risk")} className="mt-0.5 shrink-0"
+                style={{ color: al.kind === "risk" ? C.down : C.up, background: "none", border: "none", lineHeight: 0, padding: 0 }}
+                title={al.kind === "risk" ? "Risk — tap to flip" : "Opportunity — tap to flip"}>
+                {al.kind === "risk" ? <Icon name="triangle-alert" size={15} /> : <Icon name="sparkles" size={15} />}</button>
+              <div className="flex-1 min-w-0"><EditText value={al.text} autoEdit={autoEditId === al.id} onEnter={addAlert}
+                onCommit={(v) => upd("alerts", al.id, "text", v)} placeholder="Alert" /></div>
+              <Kill onClick={() => del("alerts", al.id)} />
+            </div>
+          ))}
+        </div>
+        <AddRow label="Add alert" onClick={addAlert} />
+      </Card>
+    </>
+  );
+
+  /* ── PORTFOLIO ── */
+  const pTotal = portfolioTotal(s);
+  const openType = portfolioView ? s.portfolio.find((t) => t.id === portfolioView) : null;
+  const money = (v) => `${s.currency} ${fmt(v)}`;
+
+  const renderHolding = (t, h) => {
+    if (t.key === "etf") {
+      const val = (+h.shares || 0) * (+h.price || 0);
+      const income = (+h.shares || 0) * (+h.div || 0);
+      return (
+        <Card key={h.id} style={{ marginBottom: 10 }} right={<Kill onClick={() => delHolding(t.id, h.id)} />}
+          title={<EditText value={h.name} onCommit={(v) => updHolding(t.id, h.id, "name", v)} placeholder="Fund name" style={{ fontSize: 13, color: C.text }} />}>
+          <div className="flex items-baseline justify-between mb-3">
+            <span style={{ color: C.dim, fontSize: 12 }}>Value</span>
+            <span style={{ fontFamily: FM, fontSize: 18, fontWeight: 600 }}>{money(val)}</span></div>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+            <Fact label="Shares"><Num value={h.shares} onCommit={(v) => updHolding(t.id, h.id, "shares", v)} full /></Fact>
+            <Fact label="Price"><Num value={h.price} onCommit={(v) => updHolding(t.id, h.id, "price", v)} full /></Fact>
+            <Fact label="Dividend / share"><Num value={h.div} onCommit={(v) => updHolding(t.id, h.id, "div", v)} full /></Fact>
+            <Fact label="Next dividend"><DateField value={h.nextDiv} onChange={(v) => updHolding(t.id, h.id, "nextDiv", v)} /></Fact>
+          </div>
+          <div className="mt-3 pt-2" style={{ borderTop: `1px solid ${C.lineSoft}`, color: C.dim, fontSize: 12 }}>
+            Est. annual dividend <span style={{ color: C.up, fontFamily: FM }}>{money(income)}</span></div>
+        </Card>
+      );
+    }
+    if (t.key === "saudi" || t.key === "us") {
+      const { basis, val, gain, pct } = stockPL(h);
+      return (
+        <Card key={h.id} style={{ marginBottom: 10 }} right={<Kill onClick={() => delHolding(t.id, h.id)} />}
+          title={<EditText value={h.name} onCommit={(v) => updHolding(t.id, h.id, "name", v)} placeholder="Company" style={{ fontSize: 13, color: C.text }} />}>
+          <div className="flex items-baseline justify-between mb-3">
+            <span style={{ color: C.dim, fontSize: 12 }}>Value now</span>
+            <span style={{ fontFamily: FM, fontSize: 18, fontWeight: 600 }}>{money(val)}</span></div>
+          <div className="grid grid-cols-3 gap-x-4 gap-y-3">
+            <Fact label="Shares"><Num value={h.shares} onCommit={(v) => updHolding(t.id, h.id, "shares", v)} full /></Fact>
+            <Fact label="Avg cost"><Num value={h.cost} onCommit={(v) => updHolding(t.id, h.id, "cost", v)} full /></Fact>
+            <Fact label="Price now"><Num value={h.price} onCommit={(v) => updHolding(t.id, h.id, "price", v)} full /></Fact>
+          </div>
+          <div className="mt-3 pt-2 flex items-center justify-between" style={{ borderTop: `1px solid ${C.lineSoft}`, fontSize: 12 }}>
+            <span style={{ color: C.dim }}>Cost {money(basis)}</span>
+            <span style={{ color: gain >= 0 ? C.up : C.down, fontFamily: FM }}>{gain >= 0 ? "+" : "−"}{money(Math.abs(gain))} ({Math.abs(pct).toFixed(1)}%)</span>
+          </div>
+        </Card>
+      );
+    }
+    if (t.key === "deposit") {
+      const mv = maturityValue(h), days = daysToMaturity(h), earn = mv - (+h.principal || 0);
+      return (
+        <Card key={h.id} style={{ marginBottom: 10 }} right={<Kill onClick={() => delHolding(t.id, h.id)} />}
+          title={<EditText value={h.name} onCommit={(v) => updHolding(t.id, h.id, "name", v)} placeholder="Deposit / bank" style={{ fontSize: 13, color: C.text }} />}>
+          <div className="flex items-baseline justify-between mb-3">
+            <span style={{ color: C.dim, fontSize: 12 }}>Value now</span>
+            <span style={{ fontFamily: FM, fontSize: 18, fontWeight: 600 }}>{money(+h.principal || 0)}</span></div>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+            <Fact label="Principal"><Num value={h.principal} onCommit={(v) => updHolding(t.id, h.id, "principal", v)} full /></Fact>
+            <Fact label="Rate % / yr"><Num value={h.rate} onCommit={(v) => updHolding(t.id, h.id, "rate", v)} full /></Fact>
+            <Fact label="Start"><DateField value={h.start} onChange={(v) => updHolding(t.id, h.id, "start", v)} /></Fact>
+            <Fact label="Maturity"><DateField value={h.maturity} onChange={(v) => updHolding(t.id, h.id, "maturity", v)} /></Fact>
+          </div>
+          <div className="mt-3 pt-2" style={{ borderTop: `1px solid ${C.lineSoft}` }}>
+            <div className="flex items-center justify-between" style={{ fontSize: 12 }}>
+              <span style={{ color: C.dim }}>Value at maturity</span>
+              <span style={{ color: C.gold, fontFamily: FM, fontWeight: 600 }}>{money(mv)}</span></div>
+            <div className="flex items-center justify-between mt-1" style={{ fontSize: 12, color: C.faint }}>
+              <span>Interest {money(earn)}</span>
+              <span>{days == null ? "set maturity date" : days >= 0 ? `${days} days to go` : "matured"}</span></div>
+          </div>
+        </Card>
+      );
+    }
+    return (
+      <Card key={h.id} style={{ marginBottom: 10 }} right={<Kill onClick={() => delHolding(t.id, h.id)} />}
+        title={<EditText value={h.name} onCommit={(v) => updHolding(t.id, h.id, "name", v)} placeholder="Name" style={{ fontSize: 13, color: C.text }} />}>
+        <div className="flex items-baseline justify-between">
+          <span style={{ color: C.dim, fontSize: 12 }}>Value</span>
+          <Num value={h.value} onCommit={(v) => updHolding(t.id, h.id, "value", v)} prefix={s.currency} size="md" /></div>
+      </Card>
+    );
+  };
+
+  const renderTypeDetail = (t) => {
+    const tv = typeValue(t);
+    const income = t.key === "etf" ? t.holdings.reduce((a, h) => a + (+h.shares || 0) * (+h.div || 0), 0) : null;
+    const matSum = t.key === "deposit" ? t.holdings.reduce((a, h) => a + maturityValue(h), 0) : null;
+    return (
+      <>
+        <button onClick={() => setPortfolioView(null)} className="flex items-center gap-1 mb-3"
+          style={{ color: C.gold, background: "none", border: "none", fontFamily: FS, fontSize: 13 }}>
+          <Icon name="chevron-left" size={16} /> Portfolio</button>
+        <Card delay={20} style={{ marginBottom: 14 }} right={<Kill onClick={() => { delType(t.id); setPortfolioView(null); }} />}
+          title={<EditText value={t.name} onCommit={(v) => updType(t.id, "name", v)} placeholder="Type name" style={{ fontSize: 13, color: C.text }} />}>
+          <div className="flex items-baseline justify-between">
+            <span style={{ color: C.dim, fontSize: 12 }}>{t.holdings.length} holding{t.holdings.length === 1 ? "" : "s"}</span>
+            <Num value={tv} size="hero" bold prefix={s.currency} /></div>
+          {income != null && <div className="mt-2" style={{ color: C.dim, fontSize: 12 }}>Est. annual dividends <span style={{ color: C.up, fontFamily: FM }}>{money(income)}</span></div>}
+          {matSum != null && <div className="mt-2" style={{ color: C.dim, fontSize: 12 }}>Total value at maturity <span style={{ color: C.gold, fontFamily: FM }}>{money(matSum)}</span></div>}
+        </Card>
+        {t.holdings.length === 0 && <p style={{ color: C.faint, fontSize: 13, marginBottom: 10 }}>No holdings yet.</p>}
+        {t.holdings.map((h) => renderHolding(t, h))}
+        <button onClick={() => addHolding(t.id, t.key)} className="w-full flex items-center justify-center gap-2 rounded-2xl py-3"
+          style={{ color: C.gold, background: "none", border: `1px dashed ${C.line}`, fontFamily: FS, fontSize: 13 }}>
+          <Icon name="plus" size={15} /> Add holding</button>
+      </>
+    );
+  };
+
+  const renderPortfolio = () => {
+    if (openType) return renderTypeDetail(openType);
+    return (
+      <>
+        <Card title="Net Worth" delay={20} style={{ marginBottom: 14 }}
+          right={<button onClick={() => { const c = prompt("Currency code", s.currency); if (c) patch((d) => { d.currency = c.toUpperCase().slice(0, 4); return d; }); }}
+            style={{ color: C.faint, background: "none", border: `1px solid ${C.line}`, borderRadius: 6, padding: "2px 8px", fontFamily: FM, fontSize: 11 }}>{s.currency}</button>}>
+          <Num value={nw} size="hero" bold prefix={s.currency} />
+          <div className="flex items-center gap-4 flex-wrap mt-3">
+            {delta === 0 ? <span style={{ color: C.faint, fontSize: 12 }}>· No change since open</span> :
+              <span className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1" style={{ color: delta > 0 ? C.up : C.down, background: (delta > 0 ? C.up : C.down) + "1A", fontFamily: FM, fontSize: 12 }}>
+                {delta > 0 ? <Icon name="arrow-up-right" size={13} /> : <Icon name="arrow-down-right" size={13} />}{delta > 0 ? "+" : "−"}{fmt(Math.abs(delta))} ({Math.abs(pct).toFixed(1)}%)</span>}
+            <Pill label="1W" d={d1w} /><Pill label="1M" d={d1m} />
+          </div>
+          {s.history && s.history.length >= 2 && <div className="mt-4"><Spark data={s.history} color={C.gold} /></div>}
+        </Card>
+
+        <Card title="Holdings by type" delay={50} style={{ marginBottom: 14 }}>
+          {s.portfolio.map((t) => {
+            const tv = typeValue(t), p = pTotal ? (tv / pTotal) * 100 : 0;
+            return (
+              <button key={t.id} onClick={() => setPortfolioView(t.id)} className="w-full text-left py-2.5"
+                style={{ background: "none", border: "none", borderBottom: `1px solid ${C.lineSoft}`, display: "block" }}>
+                <div className="flex items-center gap-3">
+                  <div className="flex-1 min-w-0">
+                    <div style={{ color: C.text, fontSize: 14 }}>{t.name}</div>
+                    <div style={{ color: C.faint, fontSize: 11 }}>{t.holdings.length} holding{t.holdings.length === 1 ? "" : "s"}</div>
+                  </div>
+                  <span style={{ color: C.faint, fontFamily: FM, fontSize: 11, width: 32, textAlign: "right" }}>{p.toFixed(0)}%</span>
+                  <span style={{ fontFamily: FM, fontSize: 14, minWidth: 88, textAlign: "right" }}>{money(tv)}</span>
+                  <Icon name="chevron-right" size={16} style={{ color: C.gold }} />
+                </div>
+                <div style={{ height: 3, background: C.lineSoft, borderRadius: 3, marginTop: 8 }}>
+                  <div style={{ width: `${p}%`, height: "100%", background: C.gold, borderRadius: 3 }} /></div>
+              </button>
+            );
+          })}
+          <button onClick={() => { const t = { id: uid(), key: "other", name: "New type", holdings: [] }; patch((d) => { d.portfolio = [...d.portfolio, t]; return d; }); setPortfolioView(t.id); }}
+            className="flex items-center gap-1.5 mt-3 text-xs" style={{ color: C.gold, background: "none", border: "none", fontFamily: FS }}>
+            <Icon name="plus" size={13} /> Add type</button>
+        </Card>
+
+        <Card title="Liabilities" delay={70} style={{ marginBottom: 14 }}>
+          {s.liabilities.map((a) => (
+            <Row key={a.id}>
+              <div className="flex-1 min-w-0"><EditText value={a.label} onCommit={(v) => upd("liabilities", a.id, "label", v)} placeholder="Label" /></div>
+              <Num value={a.value} onCommit={(v) => upd("liabilities", a.id, "value", v)} prefix={s.currency} />
+              <Kill onClick={() => del("liabilities", a.id)} />
+            </Row>
+          ))}
+          <AddRow label="Add liability" onClick={() => patch((d) => { d.liabilities = [...d.liabilities, { id: uid(), label: "New liability", value: 0 }]; return d; })} />
+          <div className="flex items-center justify-between mt-4 pt-3" style={{ borderTop: `1px solid ${C.gold}44` }}>
+            <span style={{ color: C.gold, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase" }}>Net worth</span>
+            <span style={{ fontFamily: FM, fontWeight: 600, fontSize: 18 }}><span style={{ color: C.faint, fontSize: "0.7em", marginRight: 4 }}>{s.currency}</span>{fmt(nw)}</span></div>
+        </Card>
+
+        <Card title="Cash Position" delay={90}>
+          <div className="flex items-baseline justify-between">
+            <span style={{ color: C.dim, fontSize: 13 }}>Available</span>
+            <span style={{ fontFamily: FM, fontSize: 22, fontWeight: 600 }}><span style={{ color: C.faint, fontSize: "0.6em", marginRight: 4 }}>{s.currency}</span>{fmt(cash)}</span></div>
+          <div className="flex items-center justify-between mt-3 py-1.5" style={{ borderTop: `1px solid ${C.lineSoft}` }}>
+            <span style={{ color: C.dim, fontSize: 13 }}>Monthly burn</span>
+            <Num value={s.burn} onCommit={(v) => patch((d) => { d.burn = v; return d; })} prefix={s.currency} /></div>
+          <div className="flex items-center justify-between mt-1">
+            <span style={{ color: C.dim, fontSize: 13 }}>Runway</span>
+            <span style={{ fontFamily: FM, fontSize: 14, color: runway == null ? C.faint : runway < 6 ? C.down : C.up }}>{runway == null ? "—" : `${runway.toFixed(1)} mo`}</span></div>
+        </Card>
+      </>
+    );
+  };
+
+  /* ── BUSINESS ── */
+  const renderBusiness = () => (
+    <>
+      <div className="grid grid-cols-3 gap-3 mb-3">
+        <Card delay={20} style={{ padding: 14 }}><Stat label="Open to-dos" value={`${openTodosTotal}`} sub={`${s.businesses.length} companies`} tone={openTodosTotal ? C.text : C.up} /></Card>
+        <Card delay={30} style={{ padding: 14 }}><Stat label="Invested" value={fmt(bizInvested)} sub={bizInvested ? `${((bizProfit / bizInvested) * 100).toFixed(0)}% ROI` : "—"} tone={C.gold} /></Card>
+        <Card delay={40} style={{ padding: 14 }}><Stat label="Profit share" value={fmt(profitShareTotal)} sub="your economic take" tone={C.up} /></Card>
+      </div>
+      {s.businesses.map((b, bi) => {
+        const roi = b.invested ? (b.profit / b.invested) * 100 : null;
+        const share = (+b.profit || 0) * (+b.ownership || 0) / 100;
+        return (
+          <Card key={b.id} delay={50 + bi * 20} style={{ marginBottom: 14 }}
+            right={<span className="flex items-center gap-2">
+              <span style={{ color: C.gold, fontSize: 11, fontFamily: FM, border: `1px solid ${C.line}`, borderRadius: 999, padding: "2px 8px" }}>{b.ownership || 0}% stake</span>
+              <Kill onClick={() => del("businesses", b.id)} />
+            </span>}
+            title={<EditText value={b.name} onCommit={(v) => upd("businesses", b.id, "name", v)} placeholder="Company name" style={{ fontSize: 13, letterSpacing: "0.04em", color: C.text }} />}>
+            {/* To-do — the focus of each company */}
+            <div className="mb-4">
+              <div className="flex items-center justify-between mb-2">
+                <span style={{ color: C.dim, fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase" }}>To-do</span>
+                <span style={{ color: C.faint, fontSize: 11, fontFamily: FM }}>{(b.todos || []).filter((t) => !t.done).length} open</span>
+              </div>
+              {(b.todos || []).length === 0 && <p style={{ color: C.faint, fontSize: 13 }}>No tasks yet. Add the first.</p>}
+              <div className="flex flex-col gap-2">
+                {(b.todos || []).map((t) => (
+                  <div key={t.id} className="group flex items-start gap-2.5">
+                    <button onClick={() => updTodo(b.id, t.id, "done", !t.done)} className="mt-0.5 shrink-0 rounded"
+                      style={{ width: 16, height: 16, border: `1.5px solid ${t.done ? C.up : C.line}`, background: t.done ? C.up + "22" : "transparent", display: "grid", placeItems: "center", padding: 0 }}>
+                      {t.done && <Icon name="check" size={11} color={C.up} />}</button>
+                    <div className="flex-1 min-w-0"><EditText value={t.text} strike={t.done} autoEdit={autoEditId === t.id} onEnter={() => addTodo(b.id)}
+                      onCommit={(v) => updTodo(b.id, t.id, "text", v)} placeholder="Task" /></div>
+                    <Kill onClick={() => delTodo(b.id, t.id)} />
+                  </div>
+                ))}
+              </div>
+              <AddRow label="Add task" onClick={() => addTodo(b.id)} />
+            </div>
+
+            {/* Facts — kept compact and secondary */}
+            <div className="grid grid-cols-2 gap-x-4 gap-y-3 mb-4 pt-3" style={{ borderTop: `1px solid ${C.lineSoft}` }}>
+              <Fact label="Last stated revenue"><Num value={b.revenue} onCommit={(v) => upd("businesses", b.id, "revenue", v)} full /></Fact>
+              <Fact label="Ownership %"><Num value={b.ownership} onCommit={(v) => upd("businesses", b.id, "ownership", v)} full /></Fact>
+              <Fact label="Profit"><Num value={b.profit} onCommit={(v) => upd("businesses", b.id, "profit", v)} tone={C.up} full /></Fact>
+              <Fact label="Capital invested"><Num value={b.invested} onCommit={(v) => upd("businesses", b.id, "invested", v)} full /></Fact>
+              <Fact label="Cash on hand"><Num value={b.cash} onCommit={(v) => upd("businesses", b.id, "cash", v)} full /></Fact>
+              <Fact label="Return on invested"><span style={{ fontFamily: FM, fontSize: 14, color: roi == null ? C.faint : roi >= 0 ? C.gold : C.down }}>{roi == null ? "—" : `${roi.toFixed(1)}%`}</span></Fact>
+              <Fact label={`Your share (${b.ownership || 0}%)`}><span style={{ fontFamily: FM, fontSize: 14, color: C.up }}>{fmt(share)}</span></Fact>
+            </div>
+
+            {/* Per-company brief */}
+            <div className="rounded-xl p-3 mb-4" style={{ background: "#10151D", border: `1px solid ${C.lineSoft}` }}>
+              <div className="flex items-center justify-between mb-2">
+                <span className="inline-flex items-center gap-1.5" style={{ color: C.gold, fontSize: 12 }}><Icon name="sparkles" size={13} /> Company brief</span>
+                <button onClick={() => companyBrief(b)} disabled={coLoading === b.id} className="flex items-center gap-1.5 text-xs"
+                  style={{ color: C.gold, background: "none", border: `1px solid ${C.line}`, borderRadius: 7, padding: "3px 9px", fontFamily: FS }}>
+                  <Icon name="refresh-cw" size={11} className={coLoading === b.id ? "aos-spin" : ""} /> {coLoading === b.id ? "Analyzing…" : b.brief ? "Refresh" : "Analyze"}</button>
+              </div>
+              {coLoading === b.id && !b.brief && <p className="aos-pulse" style={{ color: C.dim, fontSize: 13 }}>Reading this company…</p>}
+              {b.brief && b.brief.error && <p style={{ color: C.down, fontSize: 13 }}>Couldn't analyze. Tap Analyze to retry.</p>}
+              {b.brief && b.brief.items && <BriefItems items={b.brief.items} levelColor={levelColor} />}
+              {!b.brief && coLoading !== b.id && <p style={{ color: C.faint, fontSize: 13 }}>Tap Analyze for a read on your return, cash, and whether the to-dos are the right priorities.</p>}
+            </div>
+
+            <div style={{ color: C.dim, fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 4 }}>KPIs</div>
+            {b.kpis.map((k) => (
+              <div key={k.id} className="group flex items-center gap-3 py-1.5" style={{ borderBottom: `1px solid ${C.lineSoft}` }}>
+                <div className="flex-1 min-w-0"><EditText value={k.label} onCommit={(v) => updKpi(b.id, k.id, "label", v)} placeholder="KPI" /></div>
+                <div style={{ width: 46 }}><EditText value={k.unit} onCommit={(v) => updKpi(b.id, k.id, "unit", v)} placeholder="unit" style={{ color: C.faint, fontSize: 11, fontFamily: FM }} /></div>
+                <Num value={k.value} onCommit={(v) => updKpi(b.id, k.id, "value", v)} />
+                <Kill onClick={() => patch((d) => { d.businesses = d.businesses.map((x) => x.id === b.id ? { ...x, kpis: x.kpis.filter((y) => y.id !== k.id) } : x); return d; })} />
+              </div>
+            ))}
+            <AddRow label="Add KPI" onClick={() => patch((d) => { d.businesses = d.businesses.map((x) => x.id === b.id ? { ...x, kpis: [...x.kpis, { id: uid(), label: "New KPI", value: 0, unit: "" }] } : x); return d; })} />
+          </Card>
+        );
+      })}
+      <button onClick={() => patch((d) => { d.businesses = [...d.businesses, { id: uid(), name: "New company", ownership: 100, revenue: 0, profit: 0, cash: 0, invested: 0, todos: [], kpis: [], brief: null }]; return d; })}
+        className="w-full flex items-center justify-center gap-2 rounded-2xl py-3"
+        style={{ color: C.gold, background: "none", border: `1px dashed ${C.line}`, fontFamily: FS, fontSize: 13 }}><Icon name="plus" size={15} /> Add company</button>
+    </>
+  );
+
+  /* ── HABITS ── */
+  const week = lastDays(7);
+  const renderHabits = () => (
+    <Card title="Daily Habits" delay={20}>
+      {s.habits.length === 0 && <p style={{ color: C.faint, fontSize: 13 }}>No habits yet. Add one to start a streak.</p>}
+      <div className="flex flex-col gap-4">
+        {s.habits.map((h) => (
+          <div key={h.id} className="group">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="flex-1 min-w-0"><EditText value={h.name} onCommit={(v) => upd("habits", h.id, "name", v)} placeholder="Habit" /></div>
+              <span className="inline-flex items-center gap-1" style={{ color: streak(h.log) ? C.gold : C.faint, fontFamily: FM, fontSize: 12 }}><Icon name="flame" size={13} /> {streak(h.log)}</span>
+              <Kill onClick={() => del("habits", h.id)} />
+            </div>
+            <div className="flex gap-2">
+              {week.map((d) => {
+                const on = h.log && h.log[d.date];
+                return (
+                  <button key={d.date} onClick={() => patch((D) => { D.habits = D.habits.map((x) => { if (x.id !== h.id) return x; const log = { ...(x.log || {}) }; if (log[d.date]) delete log[d.date]; else log[d.date] = true; return { ...x, log }; }); return D; })}
+                    className="flex-1 flex flex-col items-center gap-1" style={{ background: "none", border: "none", padding: 0 }}>
+                    <span style={{ color: C.faint, fontSize: 10, fontFamily: FM }}>{d.label}</span>
+                    <span style={{ width: "100%", height: 26, borderRadius: 7, background: on ? C.up : C.lineSoft, border: `1px solid ${on ? C.up : C.line}`, display: "grid", placeItems: "center" }}>
+                      {on && <Icon name="check" size={13} color="#0C0F14" />}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+      <AddRow label="Add habit" onClick={() => patch((d) => { const id = uid(); setAutoEditId(id); d.habits = [...d.habits, { id, name: "", log: {} }]; return d; })} />
+    </Card>
+  );
+
+  /* ── REMINDERS ── */
+  const sortedReminders = [...s.reminders].sort((a, b) => (a.done - b.done) || ((a.due || "9999") < (b.due || "9999") ? -1 : 1));
+  const renderReminders = () => (
+    <Card title="Reminders" delay={20}>
+      {s.reminders.length === 0 && <p style={{ color: C.faint, fontSize: 13 }}>Nothing to remember yet. Add a follow-up.</p>}
+      <div className="flex flex-col gap-3">
+        {sortedReminders.map((r) => {
+          const overdue = r.due && !r.done && r.due <= todayStr();
+          return (
+            <div key={r.id} className="group flex items-start gap-2.5">
+              <button onClick={() => upd("reminders", r.id, "done", !r.done)} className="mt-0.5 shrink-0 rounded"
+                style={{ width: 16, height: 16, border: `1.5px solid ${r.done ? C.up : C.line}`, background: r.done ? C.up + "22" : "transparent", display: "grid", placeItems: "center", padding: 0 }}>
+                {r.done && <Icon name="check" size={11} color={C.up} />}</button>
+              <div className="flex-1 min-w-0">
+                <EditText value={r.text} strike={r.done} autoEdit={autoEditId === r.id} onEnter={addReminder}
+                  onCommit={(v) => upd("reminders", r.id, "text", v)} placeholder="Reminder" />
+                <input type="date" value={r.due || ""} onChange={(e) => upd("reminders", r.id, "due", e.target.value || null)}
+                  className="mt-1 bg-transparent outline-none" style={{ color: overdue ? C.down : C.faint, fontSize: 11, fontFamily: FM, border: "none", colorScheme: "dark" }} />
+              </div>
+              <Kill onClick={() => del("reminders", r.id)} />
+            </div>
+          );
+        })}
+      </div>
+      <AddRow label="Add reminder" onClick={addReminder} />
+    </Card>
+  );
+
+  const tabs = [
+    { id: "home", label: "Home", icon: "layout-grid" },
+    { id: "business", label: "Business", icon: "building-2" },
+    { id: "portfolio", label: "Portfolio", icon: "pie-chart" },
+    { id: "habits", label: "Habits", icon: "flame" },
+    { id: "reminders", label: "Reminders", icon: "bell" },
+  ];
+  const titles = { home: greeting, business: "Business", portfolio: "Portfolio", habits: "Habits", reminders: "Reminders" };
+
+  const notifLabel = notifPerm === "granted" ? "Alerts on" : notifPerm === "denied" ? "Alerts blocked" : notifPerm === "unsupported" ? "Alerts n/a" : "Enable alerts";
+
+  return (
+    <div style={{ background: C.bg, minHeight: "100vh", fontFamily: FS, color: C.text }}>
+      <style>{`
+        .aos-rise { animation: aosRise .5s cubic-bezier(.2,.7,.2,1) both; }
+        @keyframes aosRise { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:none;} }
+        .aos-spin { animation: aosSpin 1s linear infinite; } @keyframes aosSpin { to {transform:rotate(360deg);} }
+        .aos-pulse { animation: aosPulse 1.4s ease-in-out infinite; } @keyframes aosPulse {0%,100%{opacity:.4}50%{opacity:1}}
+        button:focus-visible, input:focus-visible { outline:2px solid ${C.gold}; outline-offset:2px; border-radius:3px; }
+        @media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important;} }
+        input::placeholder{ color:${C.faint}; }
+      `}</style>
+
+      <div className="mx-auto px-5 pt-8" style={{ maxWidth: 1040, paddingBottom: 96 }}>
+        <header className="flex items-start justify-between mb-6 aos-rise">
+          <div>
+            <div className="flex items-center gap-2" style={{ color: C.gold }}>
+              <span style={{ fontSize: 13 }}>◆</span><span style={{ fontFamily: FM, letterSpacing: "0.28em", fontSize: 12 }}>ARROW OS</span></div>
+            <h1 className="mt-2" style={{ fontSize: 26, fontWeight: 500, letterSpacing: "-0.01em" }}>{titles[tab]}</h1>
+          </div>
+          <div className="flex flex-col items-end gap-2">
+            <div style={{ color: C.dim, fontSize: 13 }}>{dateStr}</div>
+            <button onClick={setApiKey} className="inline-flex items-center gap-1.5" style={{ color: hasKey ? C.up : C.gold, background: "none", border: `1px solid ${C.line}`, borderRadius: 999, padding: "3px 10px", fontFamily: FS, fontSize: 11 }}><Icon name="sparkles" size={12} /> {hasKey ? "AI key set" : "Add AI key"}</button>
+            <button onClick={enableNotifs} disabled={notifPerm === "granted" || notifPerm === "denied" || notifPerm === "unsupported"}
+              className="inline-flex items-center gap-1.5"
+              style={{ color: notifPerm === "granted" ? C.up : C.dim, background: "none", border: `1px solid ${C.line}`, borderRadius: 999, padding: "3px 10px", fontFamily: FS, fontSize: 11 }}>
+              <Icon name="bell" size={12} /> {notifLabel}</button>
+          </div>
+        </header>
+
+        {tab === "home" && renderHome()}
+        {tab === "portfolio" && renderPortfolio()}
+        {tab === "business" && renderBusiness()}
+        {tab === "habits" && renderHabits()}
+        {tab === "reminders" && renderReminders()}
+      </div>
+
+      <nav style={{ position: "fixed", left: 0, right: 0, bottom: 0, background: C.nav, borderTop: `1px solid ${C.line}`, backdropFilter: "blur(8px)" }}>
+        <div className="mx-auto flex" style={{ maxWidth: 1040 }}>
+          {tabs.map((t) => {
+            const on = tab === t.id;
+            return (
+              <button key={t.id} onClick={() => { setTab(t.id); if (t.id !== "portfolio") setPortfolioView(null); }} className="flex-1 flex flex-col items-center gap-1"
+                style={{ background: "none", border: "none", padding: "10px 4px 12px", color: on ? C.gold : C.faint }}>
+                <Icon name={t.icon} size={20} strokeWidth={on ? 2.2 : 1.8} /><span style={{ fontSize: 10.5, fontFamily: FS }}>{t.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      </nav>
+    </div>
+  );
+}
+
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+</script>
+</body>
+</html>
